@@ -1,0 +1,68 @@
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600&display=swap");
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 1.3rem;
+  color: #ffff;
+  font-size: 1.5rem;
+  background-image: url("../components/images/Moon.svg");
+  margin-bottom: -0.1rem;
+}
+ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+}
+li,
+.logo {
+  margin: 0.5rem;
+  cursor: pointer;
+}
+.logo {
+  font-family: "Dancing Script", cursive;
+  padding-top: 1.2rem;
+}
+.menu {
+  display: flex;
+}
+.socials {
+  margin-left: 1.3rem;
+  padding: 3px 30px;
+  border-radius: 20px;
+}
+.links,
+a {
+  color: #fff;
+  text-decoration: none;
+}
+.links:hover {
+  color: #7ee8fa;
+}
+.links:focus {
+  color: #7ee8fa;
+}
+.resume {
+  margin-top: 0;
+  padding: 0.2rem;
+  border: 1px solid #75b3be;
+  text-align: center;
+  border-radius: 5px;
+  color: #7ee8fa;
+}
+.modalbtn {
+  color: #fff;
+  background: none;
+  border: none;
+  font-size: 20px;
+  display: none;
+}
+
+@media screen and (max-width: 600px) {
+  .modalbtn {
+    display: block;
+  }
+  .socials {
+    display: none;
+  }
+}

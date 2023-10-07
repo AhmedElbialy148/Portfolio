@@ -1,0 +1,17 @@
+@import url("https://fonts.googleapis.com/css2?family=Lobster+Two&display=swap");
+@media screen and (max-width: 600px) {
+  * {
+    overflow-x: hidden;
+  }
+}
+
+@media (max-width: 900px) {
+  html {
+    font-size: 80%;
+  }
+}
+@media (max-width: 330px) {
+  html {
+    font-size: 70%;
+  }
+}

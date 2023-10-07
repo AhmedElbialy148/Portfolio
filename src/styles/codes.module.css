@@ -1,0 +1,85 @@
+.codes {
+  background-image: url("../components/images/Moon.svg");
+  padding: 0 3rem;
+}
+.search {
+  margin-bottom: 1rem;
+}
+.search input {
+  width: 95%;
+  padding: 0.5rem 0.8rem;
+  background-color: #1b1b33;
+  color: white;
+  border-radius: 10px;
+  border: none;
+  font-size: 1.1rem;
+}
+.search input:focus {
+  border: 1px solid white;
+}
+.codeitems {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+}
+.item {
+  color: #fff;
+  margin: 1rem;
+  width: 350px;
+  background-color: white;
+  box-shadow: 5px 8px 8px grey;
+  border-radius: 8px;
+}
+.item:hover {
+  box-shadow: 0px 0px 0px grey;
+  transition: 0.5s ease;
+}
+.codeimg img {
+  width: 350px;
+  height: 208px;
+}
+.codetitle {
+  margin-top: 0.5rem;
+  color: #000;
+  text-align: center;
+  padding: 0.3rem;
+}
+.codedesc {
+  color: #363636;
+  text-align: center;
+  padding: 0.5rem 0.3rem;
+}
+
+@media screen and (max-width: 600px) {
+  .codeitems {
+    grid-template-columns: auto;
+  }
+  .item {
+    margin: 0.5rem 0;
+  }
+  .item {
+    width: 310px;
+  }
+  .codeimg img {
+    width: 305px;
+    height: 158px;
+  }
+  .search input {
+    width: 86%;
+    font-size: 1rem;
+    outline: none;
+  }
+}
+
+@media screen and (max-width: 850px) {
+  .codeitems {
+    grid-template-columns: repeat(2, auto);
+  }
+  .item {
+    margin: 00.5rem 0.2rem;
+    width: 310px;
+  }
+  .codeimg img {
+    width: 305px;
+    height: 158px;
+  }
+}

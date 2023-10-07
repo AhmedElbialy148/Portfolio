@@ -1,0 +1,98 @@
+.Tech {
+  color: #000;
+  min-height: 50vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2.3rem;
+}
+.techstacks .intro {
+  margin-bottom: 1rem;
+  font-size: 3rem;
+  text-align: center;
+  font-weight: bold;
+  color: #4a5466;
+}
+.techs {
+  max-width: 90%;
+  margin: 0 auto;
+  margin-top: 2.3rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: space-around;
+  align-items: center;
+  padding: 2.5rem;
+}
+.stacktitle {
+  font-size: 1.4rem;
+  line-height: 3;
+  color: #4a5466;
+  font-weight: bold;
+  text-align: center;
+}
+.stackicons,
+.mstackicons,
+.cstackicons {
+  color: red;
+  display: flex;
+  justify-content: space-evenly;
+  text-align: center;
+  font-size: 1.55rem;
+  margin-bottom: 1.6rem;
+}
+.mstackicons {
+  color: #00c3ff;
+}
+.cstackicons {
+  color: blue;
+}
+.content {
+  line-height: 2.5;
+  font-size: 1.2rem;
+  text-align: center;
+  color: #4a5466;
+}
+.lottie {
+  width: 100%;
+  overflow: hidden;
+  align-items: center;
+  justify-content: center;
+}
+
+.row {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* media queries */
+@media screen and (max-width: 600px) {
+  .techs {
+    /* display: block; */
+    grid-template-columns: 1fr;
+    justify-items: center;
+    align-items: center;
+    margin-top: 0.5rem;
+  }
+  .techstacks .intro {
+    margin-bottom: 0.5rem;
+    font-size: 2rem;
+  }
+  .stacktitle {
+    font-size: 1.5rem;
+    line-height: 3;
+    color: #4a5466;
+  }
+  .content {
+    line-height: 1.5;
+    font-size: 1rem;
+    text-align: center;
+    color: #4a5466;
+  }
+  .lottie {
+    max-width: 350px;
+    overflow: hidden;
+    align-items: center;
+    justify-content: center;
+  }
+}
