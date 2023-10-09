@@ -1,6 +1,7 @@
 .codes {
   background-image: url("../components/images/Moon.svg");
   padding: 0 3rem;
+  margin: 0 auto;
 }
 .search {
   margin-bottom: 1rem;
@@ -20,11 +21,11 @@
 .codeitems {
   display: grid;
   grid-template-columns: repeat(3, auto);
+  gap: 2rem;
+  justify-items: center;
 }
 .item {
   color: #fff;
-  margin: 1rem;
-  width: 350px;
   background-color: white;
   box-shadow: 5px 8px 8px grey;
   border-radius: 8px;
@@ -34,8 +35,8 @@
   transition: 0.5s ease;
 }
 .codeimg img {
-  width: 350px;
-  height: 208px;
+  width: 100%;
+  height: auto;
 }
 .codetitle {
   margin-top: 0.5rem;
@@ -53,16 +54,6 @@
   .codeitems {
     grid-template-columns: auto;
   }
-  .item {
-    margin: 0.5rem 0;
-  }
-  .item {
-    width: 310px;
-  }
-  .codeimg img {
-    width: 305px;
-    height: 158px;
-  }
   .search input {
     width: 86%;
     font-size: 1rem;
@@ -74,12 +65,10 @@
   .codeitems {
     grid-template-columns: repeat(2, auto);
   }
-  .item {
-    margin: 00.5rem 0.2rem;
-    width: 310px;
-  }
-  .codeimg img {
-    width: 305px;
-    height: 158px;
+}
+
+@media screen and (max-width: 480px) {
+  .codeitems {
+    grid-template-columns: 1fr;
   }
 }

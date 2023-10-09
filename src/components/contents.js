@@ -77,14 +77,6 @@ const Experiences = [
     description:
       "I worked as a software developer focusing mainly on backend development but also involved in frontend development in React.js",
   },
-  {
-    company: "Priceless IT solutions",
-    image: image,
-    position: "Frontend Developer",
-    dates: "August 2021 - March 2022 ",
-    description:
-      "I worked as frontend web developer to design web based admin dashboards for mulitple apps using React, Bootstrap, jQuery, Chart.js and some other libraries.",
-  },
 ];
 
 const PersonalProjects = [
@@ -93,6 +85,7 @@ const PersonalProjects = [
     images: facar,
     description: "A social network website made with Reactjs and GraphQL API.",
     link: "https://facar-adel.netlify.app/",
+    github: "https://github.com/AhmedElbailey/Facar_v2",
   },
   {
     name: "Shopify",
@@ -100,6 +93,7 @@ const PersonalProjects = [
     description:
       "An Ecommerce onine shop built as a server-side rendering server using Restful API and EJS templates",
     link: "https://shopify-cnnv.onrender.com",
+    github: "https://github.com/AhmedElbailey/Shopify",
   },
   {
     name: "To-Do App",
@@ -107,6 +101,7 @@ const PersonalProjects = [
     description:
       "A fullstack website used for creating, reading, editing and deleting user todos, built with HTML5, CSS3 and REST API.",
     link: "https://todo-list-adel.netlify.app/app",
+    github: "https://github.com/AhmedElbailey/Todo-List-App",
   },
 ];
 

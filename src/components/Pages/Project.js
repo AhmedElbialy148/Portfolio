@@ -1,6 +1,6 @@
-import React from 'react';
-import styles from '../../styles/project.module.css';
-import { PersonalProjects } from '../contents';
+import React from "react";
+import styles from "../../styles/project.module.css";
+import { PersonalProjects } from "../contents";
 
 function Project() {
   return (
@@ -16,7 +16,8 @@ function Project() {
             <div className={styles.pname}>{proj.name}</div>
             <div className={styles.desc}>{proj.description}</div>
             <div className={styles.link}>
-              <a href={proj.link}>Link</a>
+              <a href={proj.link}>Live</a>
+              <a href={proj.github}>Github</a>
             </div>
           </div>
         ))}
