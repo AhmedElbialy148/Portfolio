@@ -1,8 +1,8 @@
-import React from "react";
-import styles from "../../styles/home.module.css";
-import Lottie from "react-lottie";
-import codingAnimation from "../lotties/codinglottie.json";
-import resume from "../docs/CV.pdf";
+import React from 'react';
+import styles from '../../styles/home.module.css';
+import Lottie from 'react-lottie';
+import codingAnimation from '../lotties/codinglottie.json';
+import resume from '../docs/CV.pdf';
 
 function Home() {
   const defaultOptions = {
@@ -10,7 +10,7 @@ function Home() {
     autoplay: true,
     animationData: codingAnimation,
     rendererSettings: {
-      preserveAspectRatio: "xMidYMid slice",
+      preserveAspectRatio: 'xMidYMid slice',
     },
   };
   return (
@@ -21,9 +21,10 @@ function Home() {
         </div>
         <div className={styles.intro2}>
           <div className={styles.text}>
-            I'm passionate Full Stack web developer having an experience of web
-            applications with Nodejs, Express.js, Nest.js, React.js, and AWS
-            Cloud Services as a certified AWS Cloud Practitioner.
+            A proactive and accomplished Back-end developer having expertise in
+            various web development technologies including Nodejs, Express.js,
+            NestJS, Docker, and AWS Cloud Providers as a certified AWS Cloud
+            Practitioner.
           </div>
         </div>
         <div className={styles.button}>
