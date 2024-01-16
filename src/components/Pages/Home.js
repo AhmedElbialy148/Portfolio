@@ -2,7 +2,7 @@ import React from 'react';
 import styles from '../../styles/home.module.css';
 import Lottie from 'react-lottie';
 import codingAnimation from '../lotties/codinglottie.json';
-import resume from '../docs/CV.pdf';
+import resume from '../docs/Ahmed Adel Mohamed.pdf';
 
 function Home() {
   const defaultOptions = {
