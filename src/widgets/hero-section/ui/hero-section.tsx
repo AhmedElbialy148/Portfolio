@@ -64,7 +64,7 @@ export function HeroSection() {
         </motion.div>
 
         <motion.div
-          className="relative mx-auto aspect-square w-full max-w-md lg:max-w-none"
+          className="relative z-0 mx-auto aspect-square w-full max-w-md lg:max-w-none"
           initial={reducedMotion ? false : { opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.7, delay: 0.15, ease: [0.2, 0.8, 0.2, 1] }}
