@@ -81,7 +81,7 @@ export const SKILL_CATEGORIES: readonly SkillCategory[] = [
     id: "backend",
     title: "Backend & APIs",
     icon: "server",
-    lottieSrc: "/assets/lotties/stackslottie.json",
+    lottieSrc: "/assets/lotties/frontend-lottie.json",
     items: [
       "Node.js — Express, NestJS, Fastify",
       "Python — FastAPI, Celery, event-driven services",
@@ -117,7 +117,7 @@ export const SKILL_CATEGORIES: readonly SkillCategory[] = [
     id: "frontend",
     title: "Frontend & Mobile",
     icon: "layers",
-    lottieSrc: "/assets/lotties/frontend-lottie.json",
+    lottieSrc: "/assets/lotties/stackslottie.json",
     items: [
       "React.js, Next.js, TypeScript",
       "React Native (Expo) for cross-platform apps",
