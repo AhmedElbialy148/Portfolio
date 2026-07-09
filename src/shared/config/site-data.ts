@@ -265,7 +265,7 @@ export const PROJECTS: readonly Project[] = [
     id: "portfolio",
     name: "Portfolio",
     description: "Personal portfolio built with React.js and Vite.",
-    liveUrl: "https://portfolio-adel.netlify.app",
+    liveUrl: "https://portfolio-two-puce-19.vercel.app",
     githubUrl: "https://github.com/AhmedElbailey/Portfolio",
     imageSlot: "gradient-4",
     tags: ["React", "Vite"],

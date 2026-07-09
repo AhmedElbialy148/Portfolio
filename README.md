@@ -2,7 +2,7 @@
 
 Modern personal portfolio built with **Vite + React + TypeScript + Tailwind CSS**.
 
-Live: [portfolio-adel.netlify.app](https://portfolio-adel.netlify.app)
+Live: [portfolio-adel.vercel.app](https://portfolio-two-puce-19.vercel.app)
 
 ## Stack
 
