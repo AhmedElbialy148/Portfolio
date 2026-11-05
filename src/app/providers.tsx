@@ -1,8 +1,9 @@
 /**
  * @file app/providers.tsx
- * Global providers: theme context.
+ * Global providers: Motion config (honours prefers-reduced-motion) and theme context.
  */
 
+import { MotionConfig } from "motion/react"
 import type { ReactNode } from "react"
 import { ThemeProvider } from "@/features/theme-toggle"
 
@@ -17,5 +18,9 @@ export interface ProvidersProps {
  * @param props - see {@link ProvidersProps}
  */
 export function Providers({ children }: ProvidersProps) {
-  return <ThemeProvider>{children}</ThemeProvider>
+  return (
+    <MotionConfig reducedMotion="user">
+      <ThemeProvider>{children}</ThemeProvider>
+    </MotionConfig>
+  )
 }

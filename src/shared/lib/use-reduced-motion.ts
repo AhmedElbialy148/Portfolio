@@ -5,16 +5,21 @@
 
 import { useEffect, useState } from "react"
 
+const QUERY = "(prefers-reduced-motion: reduce)"
+
 /**
  * Returns whether the user prefers reduced motion.
  *
  * @returns true when prefers-reduced-motion: reduce is active
  */
 export function useReducedMotion(): boolean {
-  const [reduced, setReduced] = useState(false)
+  // Read synchronously on first render so components never mount with the wrong value.
+  const [reduced, setReduced] = useState(function readInitialPreference() {
+    return typeof window !== "undefined" && window.matchMedia(QUERY).matches
+  })
 
   useEffect(function subscribeToMotionPreference() {
-    const mq = window.matchMedia("(prefers-reduced-motion: reduce)")
+    const mq = window.matchMedia(QUERY)
     setReduced(mq.matches)
     function handleChange(e: MediaQueryListEvent) {
       setReduced(e.matches)
