@@ -7,8 +7,8 @@
 export const ASSET_SLOTS = {
   /** Resume PDF at public/Ahmed_Adel_CV.pdf */
   resume: "/Ahmed_Adel_CV.pdf",
-  /** Drop profile photo here: public/assets/profile.jpg */
-  profile: "/assets/profile.jpg",
+  /** Hero portrait at public/assets/profile-cutout.webp — 800x1200 WebP with a transparent background. */
+  portrait: "/assets/profile-cutout.webp",
   /** Lottie animations served from public/assets/lotties/ */
   lotties: {
     coding: "/assets/lotties/codinglottie.json",

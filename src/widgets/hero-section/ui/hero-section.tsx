@@ -10,6 +10,7 @@ import { ASSET_SLOTS } from "@/shared/config/asset-slots"
 import { useReducedMotion } from "@/shared/lib/use-reduced-motion"
 import { Button } from "@/shared/ui/button"
 import { Container } from "@/shared/ui/container"
+import { HeroBackdrop, PortraitHalo } from "./hero-backdrop"
 
 const SOCIAL_ICONS = { github: Github, linkedin: Linkedin, email: Mail } as const
 
@@ -28,15 +29,7 @@ export function HeroSection() {
 
   return (
     <section className="relative overflow-hidden">
-      {/* Decorative background: dot grid fading out, plus an accent glow behind the photo. */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(var(--color-border-strong)_1px,transparent_1px)] [background-size:28px_28px] [mask-image:radial-gradient(ellipse_at_70%_40%,black,transparent_70%)] opacity-60"
-      />
-      <div
-        aria-hidden
-        className="pointer-events-none absolute -right-40 -top-40 h-[36rem] w-[36rem] rounded-full bg-[var(--color-accent-glow)] opacity-60 blur-[120px]"
-      />
+      <HeroBackdrop />
 
       <Container className="relative grid items-center gap-14 pb-12 pt-12 md:pt-16 lg:grid-cols-[1.2fr_0.8fr] lg:gap-10 lg:pb-16 lg:pt-20">
         <motion.div
@@ -113,40 +106,24 @@ export function HeroSection() {
         </motion.div>
 
         <motion.div
-          className="relative mx-auto aspect-square w-64 sm:w-72 lg:w-80"
-          initial={reducedMotion ? false : { opacity: 0, scale: 0.92 }}
-          animate={{ opacity: 1, scale: 1 }}
+          className="relative mx-auto aspect-[4/5] w-72 sm:w-80 lg:w-[24rem]"
+          initial={reducedMotion ? false : { opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.15, ease: EASE }}
         >
-          <div
-            aria-hidden
-            className="absolute -inset-[10%] rounded-full border border-[var(--color-accent)]/40"
+          {/* The photo is a cutout, so the halo shows through around it. */}
+          <PortraitHalo />
+          {/* Transparent cutout; only the bottom fades so the body doesn't end in a hard line. */}
+          <img
+            src={ASSET_SLOTS.portrait}
+            alt={PROFILE.name}
+            width={800}
+            height={1200}
+            fetchPriority="high"
+            className="relative h-full w-full object-cover object-top [mask-image:linear-gradient(to_bottom,#000_70%,transparent_100%)]"
           />
-          <div
-            aria-hidden
-            className="absolute -inset-[22%] rounded-full border border-dashed border-[var(--color-border-strong)] motion-safe:animate-[spin_60s_linear_infinite]"
-          >
-            <span className="absolute left-1/2 top-0 h-2.5 w-2.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[var(--color-accent)] shadow-[0_0_12px_var(--color-accent)]" />
-          </div>
 
-          <div className="relative h-full w-full overflow-hidden rounded-full border-4 border-[var(--color-surface-1)] bg-[var(--color-surface-2)] shadow-[var(--shadow-3)]">
-            <div
-              aria-hidden
-              className="absolute inset-0 flex items-center justify-center font-display text-5xl font-bold text-[var(--color-accent)]"
-            >
-              {firstName?.[0]}
-              {lastName[0]}
-            </div>
-            <img
-              src={ASSET_SLOTS.profile}
-              alt={PROFILE.name}
-              width={320}
-              height={320}
-              className="relative h-full w-full object-cover object-top"
-            />
-          </div>
-
-          <div className="absolute -bottom-3 -left-4 flex items-center gap-3 rounded-[var(--radius-2)] border border-[var(--color-border)] bg-[var(--color-surface-1)]/90 px-4 py-3 shadow-[var(--shadow-2)] backdrop-blur sm:-left-10">
+          <div className="absolute bottom-[8%] -left-4 flex items-center gap-3 rounded-[var(--radius-2)] border border-[var(--color-border)] bg-[var(--color-surface-1)]/90 px-4 py-3 shadow-[var(--shadow-2)] backdrop-blur sm:-left-10">
             <Briefcase className="h-4 w-4 text-[var(--color-accent)]" aria-hidden />
             <div className="leading-tight">
               <p className="font-mono text-[10px] uppercase tracking-wider text-[var(--color-fg-muted)]">

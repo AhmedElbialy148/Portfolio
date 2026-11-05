@@ -50,7 +50,12 @@ Append to `EDUCATION`. `details` is optional. Without it, the card shows only in
 
 ## Change the profile photo
 
-Overwrite `public/assets/profile.jpg`. It renders as a 160 × 160 px square in the contact section, so supply at least 480 × 480 px for sharp display on high-DPI screens.
+Overwrite `public/assets/profile-cutout.webp`. It's the hero portrait, shown at up to 384 × 480 px (4:5, cropped from the top).
+
+- It must be a **cutout with a transparent background**. The gold rings and glow sit behind it, and only the bottom edge fades out. A photo with a backdrop shows as a rectangle.
+- Export an 800 × 1200 px WebP with alpha, about 100 kB. For example, with [sharp](https://sharp.pixelplumbing.com): `sharp("in.png").resize(800, 1200).webp({ quality: 82, alphaQuality: 90 }).toFile("profile-cutout.webp")`.
+- Keep the head in the top third of the frame, so it sits inside the inner ring.
+- Keep the source file out of `public/`, because everything in `public/` is deployed.
 
 ## Change header and footer links
 

@@ -19,6 +19,7 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versioning: [S
   - Header: in-page section links, "All projects" and a "Let's talk" CTA. External links moved to the hero and contact section.
   - New "What I do" section (`ServicesSection`, `SERVICES`) with four compact cards.
   - Skills redesigned as a grid of chip cards. Chips show monochrome brand logos (Simple Icons, CC0) that take the brand colour on hover. Technologies without a logo, such as AWS services and concepts, stay text-only with short technology names. The Developer Tools and Languages categories were removed, and languages now appear in the contact card.
+  - Hero portrait: a transparent cutout (`profile-cutout.webp`, 800 × 1200, 75 kB) standing in front of the gold rings and glow, plus a richer backdrop (`hero-backdrop.tsx`): a glowing gold arc, pulsing particles and a fine line grid with a spotlight behind the portrait, with the bottom edge faded into the page. Works in both themes. `ASSET_SLOTS.profile` replaced by `ASSET_SLOTS.portrait`.
   - Contact section with a details card (email, phone, location, languages).
   - Sections alternate between `bg` and the new `--color-band` token, and headings use a mono eyebrow label.
 - Content width moved into a shared `Container`: `max-w-7xl` (up from `max-w-6xl`) with tighter side padding.

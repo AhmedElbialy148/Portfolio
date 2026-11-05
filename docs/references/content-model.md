@@ -109,7 +109,7 @@ Search matches a case-insensitive substring against `name + description + tags`.
 | Key                     | Value                                    |
 | ----------------------- | ---------------------------------------- |
 | `resume`                | `/Ahmed_Adel_CV.pdf`                     |
-| `profile`               | `/assets/profile.jpg`                    |
+| `portrait`              | `/assets/profile-cutout.webp`            |
 | `lotties.coding`        | `/assets/lotties/codinglottie.json` (hero) |
 | `lotties.stacks`        | `/assets/lotties/stackslottie.json`      |
 | `lotties.cloud`         | `/assets/lotties/cloudlottie.json`       |

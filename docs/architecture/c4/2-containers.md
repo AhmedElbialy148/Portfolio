@@ -11,7 +11,7 @@ The system has one runnable unit: a client-side React application built by Vite 
   │  ┌────────────────────────┐      ┌─────────────────────────────┐ │
   │  │ index.html             │      │ Static assets (public/)     │ │
   │  │ theme bootstrap script │      │  /Ahmed_Adel_CV.pdf         │ │
-  │  └───────────┬────────────┘      │  /assets/profile.jpg        │ │
+  │  └───────────┬────────────┘      │  /assets/profile-cutout.webp │ │
   │              │ module script    │  /assets/projects/*.png     │ │
   │              ▼                   │  /assets/lotties/*.json     │ │
   │  ┌────────────────────────┐      └──────────────▲──────────────┘ │
