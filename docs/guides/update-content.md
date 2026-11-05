@@ -32,7 +32,7 @@ Edit `EXPERIENCES`. Entries render top to bottom in array order, so keep the new
 
 Append to `SKILL_CATEGORIES`.
 
-- `icon` must be one of `"server" | "brain" | "cloud" | "layers"`. Any other value silently falls back to the server icon. To add an icon, import it from `lucide-react` and register it in the `ICONS` map in [skill-card.tsx](../../src/entities/skill/ui/skill-card.tsx).
+- `icon` must be one of `"server" | "brain" | "cloud" | "layers" | "database" | "workflow" | "wrench" | "languages"`. Any other value silently falls back to the server icon. To add an icon, import it from `lucide-react` and register it in the `ICONS` map in [skill-card.tsx](../../src/entities/skill/ui/skill-card.tsx).
 - `lottieSrc` is optional. If set, it points to a JSON file under `public/assets/lotties/`.
 
 ## Add an education entry

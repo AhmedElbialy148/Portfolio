@@ -22,7 +22,7 @@ Rendered by `SkillsSection` → `SkillCard`, one full-width card per category, i
 | ----------- | ------------------- | ------------------------------------------------------------------- |
 | `id`        | `string`            | React key                                                           |
 | `title`     | `string`            | Card heading (`<h3>`)                                               |
-| `icon`      | `string`            | One of `server`, `brain`, `cloud`, `layers`. Unknown values fall back to `server` |
+| `icon`      | `string`            | One of `server`, `brain`, `cloud`, `layers`, `database`, `workflow`, `wrench`, `languages`. Unknown values fall back to `server` |
 | `items`     | `readonly string[]` | Bullet list                                                         |
 | `lottieSrc` | `string?`           | Public URL of a Lottie JSON file. Omit to hide the animation column  |
 

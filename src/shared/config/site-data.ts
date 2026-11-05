@@ -69,10 +69,10 @@ export interface Profile {
 export const PROFILE: Profile = {
   name: "Ahmed Elbialy",
   role: "Full-Stack Engineer · Backend-Focused",
-  location: "Giza, Egypt",
+  location: "Al Haram, Giza, Egypt",
   email: "ahmedelbialy148@gmail.com",
   phone: "+201150375211",
-  bio: "Backend-focused full-stack engineer specializing in scalable systems, APIs, and data pipelines with Next.js, FastAPI, PostgreSQL, and AWS. I build production-grade AI agent systems with LangGraph and LangChain — tool integrations, execution control, and multi-step orchestration for intelligent automation.",
+  bio: "Backend-focused full-stack engineer with 2+ years of experience building scalable web applications, APIs, system integrations, and data pipelines using Next.js, FastAPI, PostgreSQL, AWS, and GCP. I specialize in AI agent engineering — LangGraph and LangChain systems with tool integrations, execution control, and multi-step orchestration — plus business-system integrations, Google Apps Script automation, and secure cloud services.",
   resumeSlot: "/Ahmed_Adel_CV.pdf",
 }
 
@@ -86,7 +86,7 @@ export const SKILL_CATEGORIES: readonly SkillCategory[] = [
       "Node.js — Express, NestJS, Fastify",
       "Python — FastAPI, Celery, event-driven services",
       "Spring Boot, REST, GraphQL, SSR",
-      "System design, distributed systems, SOLID principles",
+      "System design, distributed systems, OOP, SOLID principles",
     ],
   },
   {
@@ -95,9 +95,9 @@ export const SKILL_CATEGORIES: readonly SkillCategory[] = [
     icon: "brain",
     lottieSrc: "/assets/lotties/ai-lottie.json",
     items: [
-      "LangChain & LangGraph agent systems",
-      "Tool integration, interrupts, node-based orchestration",
-      "Multi-step pipelines with dynamic decision-making",
+      "LangChain, LangGraph, and LLM agents",
+      "Hybrid RAG — pgvector, full-text search, reciprocal rank fusion",
+      "Tool integration and agent orchestration",
       "Prompt engineering for production automation",
     ],
   },
@@ -108,9 +108,9 @@ export const SKILL_CATEGORIES: readonly SkillCategory[] = [
     lottieSrc: "/assets/lotties/cloudlottie.json",
     items: [
       "AWS — ECS, ECR, RDS, S3, Lambda, Cognito, Amplify",
-      "Docker, Docker Compose, Kubernetes, Nginx, CI/CD",
-      "PostgreSQL, Supabase, MongoDB, DynamoDB",
-      "Secure networking, load balancing, SSL/TLS",
+      "GCP — Cloud Run, Cloud SQL, GCS, Memorystore, Secret Manager, Cloud Armor",
+      "Docker, Docker Compose, Kubernetes, Nginx",
+      "CI/CD, secure networking, load balancing, SSL/TLS",
     ],
   },
   {
@@ -125,6 +125,48 @@ export const SKILL_CATEGORIES: readonly SkillCategory[] = [
       "Responsive, performance-optimized UIs",
     ],
   },
+  {
+    id: "databases",
+    title: "Databases",
+    icon: "database",
+    items: [
+      "PostgreSQL and pgvector",
+      "Supabase — data modeling and RBAC",
+      "MongoDB, DynamoDB",
+      "Redis",
+    ],
+  },
+  {
+    id: "automation",
+    title: "Data & Automation",
+    icon: "workflow",
+    items: [
+      "Google Apps Script, clasp, Google Sheets",
+      "Pandas, XLWings",
+      "Selenium, Playwright",
+      "Google Document AI, data pipelines",
+    ],
+  },
+  {
+    id: "tools",
+    title: "Developer Tools",
+    icon: "wrench",
+    items: [
+      "Cursor (AI IDE), VS Code, IntelliJ",
+      "Postman",
+      "Git, GitHub",
+    ],
+  },
+  {
+    id: "languages",
+    title: "Languages",
+    icon: "languages",
+    items: [
+      "Arabic — Native",
+      "English — B2 (Upper Intermediate)",
+      "German — A1 (Beginner, currently learning)",
+    ],
+  },
 ] as const
 
 export const EXPERIENCES: readonly Experience[] = [
@@ -136,11 +178,23 @@ export const EXPERIENCES: readonly Experience[] = [
     location: "Al Shorouk City, Cairo",
     workType: "On-Site",
     highlights: [
-      "Architected scalable full-stack apps with Next.js, focusing on backend system design and API architecture.",
-      "Built AI agents with LangGraph and LangChain — Tavily search tools, interrupts, and node-based orchestration.",
-      "Deployed production AI infrastructure on AWS (ECS, ECR, RDS PostgreSQL) with SSL/TLS and load balancing.",
-      "Integrated third-party platforms (Paychex, AxisCare, Relias) with secure auth and data sync pipelines.",
-      "Developed FastAPI + Celery async services and Python automation (Selenium, Playwright, Pandas).",
+      "Architected scalable full-stack applications with Next.js, focusing on backend system design, API architecture, and performance optimization.",
+      "Built AI agents with LangGraph and LangChain — tool-integrated systems (e.g., Tavily web search) with controlled execution flows, interrupts, and node-based orchestration loops.",
+      "Engineered multi-step agent pipelines capable of dynamic decision-making and task automation across complex workflows.",
+      "Engineered a multi-layer agentic RAG system using PostgreSQL/pgvector, full-text search, and reciprocal rank fusion, producing source-cited answers grounded in project documents and reference materials.",
+      "Built Python document-ingestion workflows for PDF, DOCX, screenplay, and budget formats, with Google Document AI OCR fallback, Voyage AI embeddings, semantic chunking, and resumable PostgreSQL jobs.",
+      "Implemented LangGraph conversation-context handling with token-aware history summarization, prompt caching, and retry logic for long user sessions and unreliable LLM API responses.",
+      "Built a Next.js server-sent events (SSE) chat that streams LangGraph agent responses to the browser, persists messages, and surfaces inline citations for source verification.",
+      "Deployed production cloud infrastructure for AI agent systems on AWS — containerized services on ECS and ECR, load balancing, SSL/TLS, and RDS PostgreSQL.",
+      "Developed services on a GCP staging environment using Cloud Run v2, Cloud SQL (PostgreSQL/pgvector), Memorystore Redis, GCS, Secret Manager, and Cloud Armor-protected HTTPS.",
+      "Designed and managed PostgreSQL databases on Supabase with robust data models, secure RBAC, and high-performance API endpoints.",
+      "Implemented Firebase authentication for a Next.js app, including TOTP/SMS multi-factor authentication, PostgreSQL-backed sessions, token-revocation checks, and account lockout.",
+      "Integrated third-party platforms (Paychex, AxisCare, Relias) with reliable authentication layers and data synchronization pipelines.",
+      "Built asynchronous, event-driven backend services with FastAPI and Celery for background jobs and data pipelines.",
+      "Developed Python automation (Selenium, Playwright, Pandas, XLWings) to extract, process, and transform large datasets, reducing manual operational overhead.",
+      "Designed and built a cross-platform PyQt desktop application with structured UI architecture, local data persistence, and workflow automation.",
+      "Developed Google Apps Script solutions that populate Google Sheets and send emails programmatically, using clasp and Git for local development.",
+      "Used AI-driven development workflows in Cursor IDE to speed up development and debugging and to raise code quality.",
     ],
   },
   {
@@ -151,9 +205,9 @@ export const EXPERIENCES: readonly Experience[] = [
     location: "Maadi, Cairo",
     workType: "On-Site",
     highlights: [
-      "Built serverless apps on AWS Amplify, Lambda, Cognito, S3, DynamoDB, and GraphQL APIs.",
-      "Developed responsive web and mobile apps with React and React Native (Expo).",
-      "Delivered scalable frontend-backend integrations in production environments.",
+      "Built and deployed cloud-native, serverless applications using AWS Amplify, Lambda, Cognito, S3, DynamoDB, and GraphQL APIs.",
+      "Designed and developed responsive web and mobile apps with React and React Native (Expo) for consistent cross-platform experiences.",
+      "Delivered scalable frontend-backend integrations in production with optimized performance and maintainability.",
     ],
   },
   {
@@ -164,7 +218,7 @@ export const EXPERIENCES: readonly Experience[] = [
     location: "Cairo",
     workType: "Remote · Part-Time",
     highlights: [
-      "Maintained scalable NestJS + MongoDB backend services under production workloads.",
+      "Developed and maintained scalable NestJS + MongoDB backend services, optimizing database schemas and performance under production workloads.",
       "Integrated Stripe, Twilio, SendGrid, and AWS S3 for financial and transactional workflows.",
       "Delivered production-ready systems in a Scrum-based team.",
     ],
@@ -178,7 +232,8 @@ export const EXPERIENCES: readonly Experience[] = [
     workType: "Remote · Freelance",
     highlights: [
       "Contributed to large-scale MEAN stack apps — Angular frontend and Node.js/Express backend.",
-      "Improved performance and scalability while resolving complex production issues.",
+      "Improved performance and scalability while resolving complex full-stack issues in production.",
+      "Collaborated with distributed teams to deliver stable, maintainable, high-quality software.",
     ],
   },
   {
@@ -189,8 +244,8 @@ export const EXPERIENCES: readonly Experience[] = [
     location: "Remote",
     workType: "Remote",
     highlights: [
-      "Built full-stack social platforms with GraphQL APIs and React.js.",
-      "Implemented CI workflows and collaborative development with Git and GitHub.",
+      "Developed full-stack applications, including social platforms, with GraphQL APIs and React.js, focusing on scalable backend architecture.",
+      "Applied best practices in version control, CI workflows, and collaborative development with Git and GitHub.",
     ],
   },
   {
@@ -201,8 +256,9 @@ export const EXPERIENCES: readonly Experience[] = [
     location: "Heliopolis, Cairo",
     workType: "On-Site",
     highlights: [
-      "Built integrations with IBM Cloud Pack (App Connect, MQ Explorer).",
-      "Developed SOAP and REST APIs handling XML and JSON for enterprise systems.",
+      "Built integration solutions with IBM Cloud Pak tools (App Connect, MQ Explorer) connecting distributed enterprise systems.",
+      "Designed and implemented message transformation pipelines and middleware logic for system interoperability.",
+      "Developed SOAP and REST APIs handling XML and JSON for enterprise-level integrations.",
     ],
   },
 ] as const
@@ -222,8 +278,8 @@ export const EDUCATION: readonly Education[] = [
     dates: "Feb 2024 – June 2024",
     location: "Nasr City, Cairo",
     details: [
-      "Hands-on SOA, microservices, and BPM with Java, Spring Boot, IBM BAW, and IBM integration tools.",
-      "DevOps exposure: Docker, Kubernetes, Jenkins, Terraform, Ansible.",
+      "Hands-on SOA, microservices, and BPM with Java, Spring Boot, IBM BAW, and IBM integration tools (App Connect, MQ Explorer, API Connect).",
+      "Exposure to DevOps (Docker, Kubernetes, Jenkins, Terraform, Ansible) and RPA with IBM tools.",
     ],
   },
 ] as const

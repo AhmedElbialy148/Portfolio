@@ -3,7 +3,7 @@
  * Skill row with Lottie beside content — matches the original side-by-side layout.
  */
 
-import { Brain, Cloud, Layers, Server } from "lucide-react"
+import { Brain, Cloud, Database, Languages, Layers, Server, Workflow, Wrench } from "lucide-react"
 import { motion } from "motion/react"
 import type { SkillCategory } from "@/shared/config/site-data"
 import { Card } from "@/shared/ui/card"
@@ -25,6 +25,10 @@ const ICONS = {
   cloud: Cloud,
   brain: Brain,
   layers: Layers,
+  database: Database,
+  workflow: Workflow,
+  wrench: Wrench,
+  languages: Languages,
 } as const
 
 /**
