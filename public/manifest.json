@@ -1,6 +1,7 @@
 {
-  "short_name": "Ahmed Adel",
-  "name": "Ahmed Adel — Backend Developer Portfolio",
+  "short_name": "Ahmed Elbialy",
+  "name": "Ahmed Elbialy — Full-Stack Engineer Portfolio",
+  "description": "Backend-focused full-stack engineer building AI agent systems, APIs, and cloud infrastructure.",
   "icons": [
     {
       "src": "favicon.svg",
