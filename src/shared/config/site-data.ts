@@ -234,7 +234,7 @@ export const PROJECTS: readonly Project[] = [
     name: "Facar",
     description: "A social network website made with React.js and GraphQL API.",
     liveUrl: "https://facar-adel.netlify.app/",
-    githubUrl: "https://github.com/AhmedElbailey/Facar_v2",
+    githubUrl: "https://github.com/AhmedElbialy148/Facar_v2",
     imageSlot: "gradient-1",
     tags: ["React", "GraphQL"],
     featured: true,
@@ -245,7 +245,7 @@ export const PROJECTS: readonly Project[] = [
     description:
       "An ecommerce online shop built as a server-side rendering server using RESTful API and EJS templates.",
     liveUrl: "https://shopify-cnnv.onrender.com",
-    githubUrl: "https://github.com/AhmedElbailey/Shopify",
+    githubUrl: "https://github.com/AhmedElbialy148/Shopify",
     imageSlot: "gradient-2",
     tags: ["Node.js", "SSR", "EJS"],
     featured: true,
@@ -256,7 +256,7 @@ export const PROJECTS: readonly Project[] = [
     description:
       "A fullstack website for creating, reading, editing and deleting user todos, built with HTML5, CSS3 and REST API.",
     liveUrl: "https://todo-list-adel.netlify.app/app",
-    githubUrl: "https://github.com/AhmedElbailey/Todo-List-App",
+    githubUrl: "https://github.com/AhmedElbialy148/Todo-List-App",
     imageSlot: "gradient-3",
     tags: ["REST API", "Fullstack"],
     featured: true,
@@ -266,7 +266,7 @@ export const PROJECTS: readonly Project[] = [
     name: "Portfolio",
     description: "Personal portfolio built with React.js and Vite.",
     liveUrl: "https://portfolio-two-puce-19.vercel.app",
-    githubUrl: "https://github.com/AhmedElbailey/Portfolio",
+    githubUrl: "https://github.com/AhmedElbialy148/Portfolio",
     imageSlot: "gradient-4",
     tags: ["React", "Vite"],
     featured: false,
@@ -277,7 +277,7 @@ export const PROJECTS: readonly Project[] = [
     description:
       "A frontend website for searching food recipes, built with HTML5, CSS3 and Firebase database.",
     liveUrl: "https://forkify-adel159.netlify.app",
-    githubUrl: "https://github.com/AhmedElbailey/Forkify",
+    githubUrl: "https://github.com/AhmedElbialy148/Forkify",
     imageSlot: "gradient-5",
     tags: ["Firebase", "Frontend"],
     featured: false,
@@ -288,7 +288,7 @@ export const PROJECTS: readonly Project[] = [
     description:
       "A frontend website for pinning marks for walking and running activities on a map.",
     liveUrl: "https://mapty-adel.netlify.app",
-    githubUrl: "https://github.com/AhmedElbailey/Mapty",
+    githubUrl: "https://github.com/AhmedElbialy148/Mapty",
     imageSlot: "gradient-6",
     tags: ["Maps", "Frontend"],
     featured: false,
@@ -299,7 +299,7 @@ export const PROJECTS: readonly Project[] = [
     description:
       "A frontend website for bank financial transactions, built with HTML5 and CSS3.",
     liveUrl: "https://bankist2-adel.netlify.app",
-    githubUrl: "https://github.com/AhmedElbailey/Bankist-2",
+    githubUrl: "https://github.com/AhmedElbialy148/Bankist-2",
     imageSlot: "gradient-7",
     tags: ["JavaScript", "UI"],
     featured: false,
@@ -310,7 +310,7 @@ export const PROJECTS: readonly Project[] = [
     description:
       "A simple online calculator with keyboard support, built with HTML5 and CSS3.",
     liveUrl: "https://calculator-adel.netlify.app",
-    githubUrl: "https://github.com/AhmedElbailey/Calculator",
+    githubUrl: "https://github.com/AhmedElbialy148/Calculator",
     imageSlot: "gradient-8",
     tags: ["JavaScript"],
     featured: false,
@@ -320,7 +320,7 @@ export const PROJECTS: readonly Project[] = [
     name: "Bankist Landing Page",
     description: "A frontend landing page for a bank, built with HTML5 and CSS3.",
     liveUrl: "https://bankist1-adel.netlify.app",
-    githubUrl: "https://github.com/AhmedElbailey/Bankist-1",
+    githubUrl: "https://github.com/AhmedElbialy148/Bankist-1",
     imageSlot: "gradient-1",
     tags: ["CSS", "Landing"],
     featured: false,
@@ -331,7 +331,7 @@ export const PROJECTS: readonly Project[] = [
     description:
       "A frontend landing page for a mobile application, built with HTML5 and CSS3.",
     liveUrl: "https://appie-adel.netlify.app",
-    githubUrl: "https://github.com/AhmedElbailey/APPIE.",
+    githubUrl: "https://github.com/AhmedElbialy148/APPIE.",
     imageSlot: "gradient-2",
     tags: ["Landing", "CSS"],
     featured: false,
@@ -342,7 +342,7 @@ export const PROJECTS: readonly Project[] = [
     description:
       "A frontend landing page for a food restaurant, built with HTML5 and CSS3.",
     liveUrl: "https://omnifood-adel.netlify.app",
-    githubUrl: "https://github.com/AhmedElbailey/Omnifood",
+    githubUrl: "https://github.com/AhmedElbialy148/Omnifood",
     imageSlot: "gradient-3",
     tags: ["Landing", "CSS"],
     featured: false,
@@ -352,7 +352,7 @@ export const PROJECTS: readonly Project[] = [
 export const SITE_LINKS: readonly SiteLink[] = [
   { id: "codes", label: "Projects", href: "/codes", external: false },
   { id: "email", label: "Email", href: "mailto:ahmedelbialy148@gmail.com", external: true },
-  { id: "github", label: "GitHub", href: "https://github.com/AhmedElbailey", external: true },
+  { id: "github", label: "GitHub", href: "https://github.com/AhmedElbialy148", external: true },
   {
     id: "linkedin",
     label: "LinkedIn",
