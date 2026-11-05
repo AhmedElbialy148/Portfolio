@@ -4,27 +4,50 @@ Reference for every exported type and constant in [src/shared/config/site-data.t
 
 ## `PROFILE: Profile`
 
-| Field        | Type     | Rendered in                                                                     |
-| ------------ | -------- | ------------------------------------------------------------------------------- |
-| `name`       | `string` | Hero `<h1>`, header logo (first word only), footer ©, page titles, photo `alt`  |
-| `role`       | `string` | Hero eyebrow line, home page `document.title`                                   |
-| `location`   | `string` | Hero eyebrow line, contact section                                              |
-| `email`      | `string` | Contact section `mailto:` link                                                  |
-| `phone`      | `string` | Contact section `tel:` link (publicly visible)                                  |
-| `bio`        | `string` | Hero paragraph                                                                  |
-| `resumeSlot` | `string` | **Not rendered.** The hero uses `ASSET_SLOTS.resume` instead. Keep the two equal. |
+| Field             | Type                  | Rendered in                                                                     |
+| ----------------- | --------------------- | ------------------------------------------------------------------------------- |
+| `name`            | `string`              | Hero `<h1>` (last word in accent), header logo (first word), footer ©, page titles, photo `alt`, initials fallback |
+| `role`            | `string`              | Hero line under the name, home page `document.title`                            |
+| `location`        | `string`              | Hero status row, contact card                                                   |
+| `email`           | `string`              | Hero "Get in touch", header "Let's talk", contact section `mailto:` links        |
+| `phone`           | `string`              | Contact card `tel:` link (publicly visible)                                     |
+| `bio`             | `string`              | **Not rendered.** Full CV summary, kept for reference                           |
+| `tagline`         | `string`              | Hero paragraph. Keep it to two sentences                                        |
+| `availability`    | `string`              | Hero status row, next to the green dot                                          |
+| `currently`       | `{ company, focus }`   | "Currently at …" card on the hero photo. Keep `focus` to a few words             |
+| `spokenLanguages` | `readonly string[]`   | Contact card "Languages" row                                                    |
+| `resumeSlot`      | `string`              | **Not rendered.** The hero uses `ASSET_SLOTS.resume` instead. Keep the two equal. |
+
+## `STATS: readonly Stat[]`
+
+Hero stats strip, four cells (`{ value, label }`). Every number must be checkable against the CV or the data in this file. Update "Public projects" when `PROJECTS` changes.
+
+## `NAV_ITEMS: readonly NavItem[]`
+
+Header section links (`{ id, label }`). `id` is the target element id on the home view, without `#`.
+
+## `SERVICES: readonly Service[]`
+
+Rendered by `ServicesSection` ("What I do") as four cards in a row on desktop.
+
+| Field         | Type                | Notes                                   |
+| ------------- | ------------------- | --------------------------------------- |
+| `id`          | `string`            | React key                               |
+| `title`       | `string`            | Card heading                            |
+| `icon`        | `SkillIcon`         | See `SKILL_CATEGORIES.icon`             |
+| `description` | `string`            | One or two sentences                    |
+| `tags`        | `readonly string[]` | Up to three, rendered as `#tag` in mono |
 
 ## `SKILL_CATEGORIES: readonly SkillCategory[]`
 
-Rendered by `SkillsSection` → `SkillCard`, one full-width card per category, in array order.
+Rendered by `SkillsSection` → `SkillCard` as a three-column grid of chip cards ("Skills & technologies"), in array order.
 
-| Field       | Type                | Notes                                                               |
-| ----------- | ------------------- | ------------------------------------------------------------------- |
-| `id`        | `string`            | React key                                                           |
-| `title`     | `string`            | Card heading (`<h3>`)                                               |
-| `icon`      | `string`            | One of `server`, `brain`, `cloud`, `layers`, `database`, `workflow`, `wrench`, `languages`. Unknown values fall back to `server` |
-| `items`     | `readonly string[]` | Bullet list                                                         |
-| `lottieSrc` | `string?`           | Public URL of a Lottie JSON file. Omit to hide the animation column  |
+| Field   | Type                | Notes                                                         |
+| ------- | ------------------- | ------------------------------------------------------------- |
+| `id`    | `string`            | React key                                                     |
+| `title` | `string`            | Card heading (`<h3>`)                                         |
+| `icon`  | `SkillIcon`         | `server`, `brain`, `cloud`, `layers`, `database` or `workflow`. Checked at compile time; glyphs live in [skill-icon.tsx](../../src/shared/ui/skill-icon/skill-icon.tsx) |
+| `items` | `readonly string[]` | Short technology names, one chip each. Keep them to 1–3 words. Labels in `TECH_ICONS` get a logo |
 
 ## `EXPERIENCES: readonly Experience[]`
 
@@ -38,7 +61,9 @@ Rendered by `ExperienceSection` → `ExperienceCard`, in array order.
 | `dates`      | `string`            | Mono text, top right (free text)   |
 | `location`   | `string`            | `location · workType` line         |
 | `workType`   | `string`            | e.g. `On-Site`, `Remote · Part-Time` |
-| `highlights` | `readonly string[]` | Bullet list                        |
+| `highlights` | `readonly string[]` | Always-visible bullets. Keep to about six   |
+| `moreHighlights` | `readonly string[]?` | Extra detail behind a "Show N more" toggle |
+| `stack`      | `readonly string[]?` | Mono chips under the bullets           |
 
 ## `EDUCATION: readonly Education[]`
 

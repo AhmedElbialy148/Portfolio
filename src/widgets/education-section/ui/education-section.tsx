@@ -5,6 +5,7 @@
 
 import { EDUCATION } from "@/shared/config/site-data"
 import { EducationCard } from "@/entities/education"
+import { Container } from "@/shared/ui/container"
 import { SectionHeading } from "@/shared/ui/section-heading"
 
 /**
@@ -12,9 +13,10 @@ import { SectionHeading } from "@/shared/ui/section-heading"
  */
 export function EducationSection() {
   return (
-    <section id="education" className="px-5 py-20 md:py-28">
-      <div className="mx-auto max-w-6xl">
+    <section id="education" className="py-16 md:py-20">
+      <Container>
         <SectionHeading
+          eyebrow="Background"
           title="Education"
           subtitle="Engineering foundation with specialized training in SOA, microservices, and enterprise integration."
         />
@@ -23,7 +25,7 @@ export function EducationSection() {
             <EducationCard key={entry.id} education={entry} />
           ))}
         </div>
-      </div>
+      </Container>
     </section>
   )
 }

@@ -1,15 +1,19 @@
 /**
  * @file widgets/site-header/ui/site-header.tsx
- * Sticky site header with logo, nav links, theme toggle, and mobile menu.
+ * Sticky site header with logo, in-page section nav, Projects page link, theme toggle and CTA.
  */
 
 import { Menu, X } from "lucide-react"
 import { useState } from "react"
 import { Link, useLocation } from "react-router-dom"
 import { ThemeToggle } from "@/features/theme-toggle"
-import { PROFILE, SITE_LINKS } from "@/shared/config/site-data"
+import { NAV_ITEMS, PROFILE } from "@/shared/config/site-data"
 import { Button } from "@/shared/ui/button"
+import { Container } from "@/shared/ui/container"
 import { cn } from "@/shared/lib/cn"
+
+const NAV_LINK =
+  "rounded-[var(--radius-2)] px-3 py-2 text-sm font-medium text-[var(--color-fg-muted)] transition-colors hover:text-[var(--color-fg)]"
 
 /**
  * Renders the sticky site header with navigation and theme toggle.
@@ -17,12 +21,15 @@ import { cn } from "@/shared/lib/cn"
 export function SiteHeader() {
   const [mobileOpen, setMobileOpen] = useState(false)
   const location = useLocation()
+  const onProjectsPage = location.pathname === "/codes"
 
-  const externalLinks = SITE_LINKS.filter((l) => l.external)
+  function closeMenu() {
+    setMobileOpen(false)
+  }
 
   return (
     <header className="sticky top-0 z-[var(--z-sticky)] border-b border-[var(--color-border)] bg-[var(--color-bg)]/80 backdrop-blur-md">
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5">
+      <Container className="flex h-16 items-center justify-between gap-4">
         <Link
           to="/"
           className="font-display text-lg font-bold tracking-tight text-[var(--color-fg)] transition-colors hover:text-[var(--color-accent)]"
@@ -31,37 +38,33 @@ export function SiteHeader() {
           <span className="text-[var(--color-accent)]">.</span>
         </Link>
 
-        <nav className="hidden items-center gap-1 md:flex" aria-label="Main navigation">
+        <nav className="hidden items-center gap-1 lg:flex" aria-label="Main navigation">
+          {NAV_ITEMS.map((item) => (
+            <Link key={item.id} to={{ pathname: "/", hash: `#${item.id}` }} className={NAV_LINK}>
+              {item.label}
+            </Link>
+          ))}
+          <span aria-hidden className="mx-2 h-5 w-px bg-[var(--color-border)]" />
           <Link
             to="/codes"
             className={cn(
-              "rounded-[var(--radius-2)] px-3 py-2 text-sm font-medium transition-colors",
-              location.pathname === "/codes"
-                ? "bg-[var(--color-accent-soft)] text-[var(--color-accent)]"
-                : "text-[var(--color-fg-muted)] hover:text-[var(--color-fg)]",
+              NAV_LINK,
+              onProjectsPage && "bg-[var(--color-accent-soft)] text-[var(--color-accent)]",
             )}
           >
-            Projects
+            All projects
           </Link>
-          {externalLinks.map((link) => (
-            <a
-              key={link.id}
-              href={link.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rounded-[var(--radius-2)] px-3 py-2 text-sm font-medium text-[var(--color-fg-muted)] transition-colors hover:text-[var(--color-fg)]"
-            >
-              {link.label}
-            </a>
-          ))}
-          <ThemeToggle />
         </nav>
 
-        <div className="flex items-center gap-2 md:hidden">
+        <div className="flex items-center gap-2">
           <ThemeToggle />
+          <Button size="sm" className="hidden h-9 px-4 sm:inline-flex" asChild>
+            <a href={`mailto:${PROFILE.email}`}>Let&apos;s talk</a>
+          </Button>
           <Button
             variant="ghost"
             size="icon"
+            className="lg:hidden"
             onClick={() => setMobileOpen((o) => !o)}
             aria-label={mobileOpen ? "Close menu" : "Open menu"}
             aria-expanded={mobileOpen}
@@ -69,34 +72,37 @@ export function SiteHeader() {
             {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </Button>
         </div>
-      </div>
+      </Container>
 
       {mobileOpen ? (
         <nav
-          className="border-t border-[var(--color-border)] bg-[var(--color-surface-1)] px-5 py-4 md:hidden"
+          className="border-t border-[var(--color-border)] bg-[var(--color-surface-1)] lg:hidden"
           aria-label="Mobile navigation"
         >
-          <div className="flex flex-col gap-1">
+          <Container className="flex flex-col gap-1 py-4">
+            {NAV_ITEMS.map((item) => (
+              <Link
+                key={item.id}
+                to={{ pathname: "/", hash: `#${item.id}` }}
+                onClick={closeMenu}
+                className="rounded-[var(--radius-2)] px-3 py-3 text-sm font-medium text-[var(--color-fg)]"
+              >
+                {item.label}
+              </Link>
+            ))}
             <Link
               to="/codes"
-              onClick={() => setMobileOpen(false)}
+              onClick={closeMenu}
               className="rounded-[var(--radius-2)] px-3 py-3 text-sm font-medium text-[var(--color-fg)]"
             >
-              All Projects
+              All projects
             </Link>
-            {externalLinks.map((link) => (
-              <a
-                key={link.id}
-                href={link.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => setMobileOpen(false)}
-                className="rounded-[var(--radius-2)] px-3 py-3 text-sm font-medium text-[var(--color-fg-muted)]"
-              >
-                {link.label}
+            <Button className="mt-2 sm:hidden" asChild>
+              <a href={`mailto:${PROFILE.email}`} onClick={closeMenu}>
+                Let&apos;s talk
               </a>
-            ))}
-          </div>
+            </Button>
+          </Container>
         </nav>
       ) : null}
     </header>

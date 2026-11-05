@@ -1,29 +1,31 @@
 /**
  * @file widgets/skills-section/ui/skills-section.tsx
- * "What I do" section with backend and cloud skill cards.
+ * Tech stack section — skill groups as a dense grid of chip cards.
  */
 
 import { SKILL_CATEGORIES } from "@/shared/config/site-data"
 import { SkillCard } from "@/entities/skill"
+import { Container } from "@/shared/ui/container"
 import { SectionHeading } from "@/shared/ui/section-heading"
 
 /**
- * Renders the skills section with category cards.
+ * Renders the skills section with grouped technology chips.
  */
 export function SkillsSection() {
   return (
-    <section id="skills" className="px-5 py-20 md:py-28">
-      <div className="mx-auto max-w-6xl">
+    <section id="skills" className="py-16 md:py-20">
+      <Container>
         <SectionHeading
-          title="What I do"
-          subtitle="Backend systems, AI agents, cloud infrastructure, and full-stack delivery — from API design to production deployment."
+          eyebrow="Tech stack"
+          title="Skills & technologies"
+          subtitle="The tools I use day to day, grouped by where they sit in the stack."
         />
-        <div className="flex flex-col gap-8">
+        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
           {SKILL_CATEGORIES.map((category, index) => (
             <SkillCard key={category.id} category={category} index={index} />
           ))}
         </div>
-      </div>
+      </Container>
     </section>
   )
 }

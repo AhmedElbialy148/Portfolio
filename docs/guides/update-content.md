@@ -32,8 +32,12 @@ Edit `EXPERIENCES`. Entries render top to bottom in array order, so keep the new
 
 Append to `SKILL_CATEGORIES`.
 
-- `icon` must be one of `"server" | "brain" | "cloud" | "layers" | "database" | "workflow" | "wrench" | "languages"`. Any other value silently falls back to the server icon. To add an icon, import it from `lucide-react` and register it in the `ICONS` map in [skill-card.tsx](../../src/entities/skill/ui/skill-card.tsx).
-- `lottieSrc` is optional. If set, it points to a JSON file under `public/assets/lotties/`.
+- `icon` is a `SkillIcon`: `"server" | "brain" | "cloud" | "layers" | "database" | "workflow"`. A typo fails the type check. To add an icon, extend `SkillIcon` in `site-data.ts` and register the `lucide-react` glyph in the `ICONS` map in [skill-icon.tsx](../../src/shared/ui/skill-icon/skill-icon.tsx).
+- `items` are chip labels. Use short names ("FastAPI", "Cloud Run"), not sentences.
+- A chip shows a brand logo when its label is a key in the `TECH_ICONS` map in [tech-icon.tsx](../../src/shared/ui/tech-icon/tech-icon.tsx). Logos come from [Simple Icons](https://simpleicons.org) (CC0). Renaming a label means updating the map key too, otherwise the chip silently falls back to text-only. Simple Icons has no AWS logos, so AWS chips are always text-only.
+- The grid has three columns, so aim for a multiple of three categories.
+
+The "What I do" cards come from `SERVICES`, and the hero stats from `STATS`. Both live in the same file.
 
 ## Add an education entry
 

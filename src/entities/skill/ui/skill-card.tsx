@@ -1,18 +1,19 @@
 /**
  * @file entities/skill/ui/skill-card.tsx
- * Skill row with Lottie beside content — matches the original side-by-side layout.
+ * Compact skill group card: icon, title and technology chips with brand logos.
  */
 
-import { Brain, Cloud, Database, Languages, Layers, Server, Workflow, Wrench } from "lucide-react"
 import { motion } from "motion/react"
 import type { SkillCategory } from "@/shared/config/site-data"
+import { useReducedMotion } from "@/shared/lib/use-reduced-motion"
 import { Card } from "@/shared/ui/card"
-import { LottieAnimation } from "@/shared/ui/lottie-animation"
+import { SkillIconTile } from "@/shared/ui/skill-icon"
+import { TechIcon } from "@/shared/ui/tech-icon"
 import { cn } from "@/shared/lib/cn"
 
 /** Props for {@link SkillCard}. */
 export interface SkillCardProps {
-  /** The skill category to display. */
+  /** The skill group to display. */
   category: SkillCategory
   /** Additional class names. */
   className?: string
@@ -20,66 +21,46 @@ export interface SkillCardProps {
   index?: number
 }
 
-const ICONS = {
-  server: Server,
-  cloud: Cloud,
-  brain: Brain,
-  layers: Layers,
-  database: Database,
-  workflow: Workflow,
-  wrench: Wrench,
-  languages: Languages,
-} as const
-
 /**
- * Renders a skill row with Lottie animation beside the bullet list.
+ * Renders a skill group as a card of technology chips.
  *
  * @param props - see {@link SkillCardProps}
  */
 export function SkillCard({ category, className, index = 0 }: SkillCardProps) {
-  const Icon = ICONS[category.icon as keyof typeof ICONS] ?? Server
+  const reducedMotion = useReducedMotion()
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 28 }}
+      className="h-full"
+      initial={reducedMotion ? false : { opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-60px" }}
-      transition={{ duration: 0.45, delay: index * 0.1, ease: [0.2, 0.8, 0.2, 1] }}
+      transition={{ duration: 0.4, delay: index * 0.06, ease: [0.2, 0.8, 0.2, 1] }}
     >
-      <Card className={cn("overflow-hidden p-0", className)}>
-        <div className="grid items-center gap-6 p-6 md:grid-cols-[minmax(200px,1fr)_1.2fr] md:gap-8 md:p-8">
-          {category.lottieSrc ? (
-            <div className="mx-auto w-full max-w-xs md:max-w-none">
-              <LottieAnimation
-                src={category.lottieSrc}
-                className="aspect-square w-full"
-                ariaLabel={`${category.title} animation`}
-              />
-            </div>
-          ) : null}
-
-          <div>
-            <div className="mb-4 flex items-center gap-3">
-              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-[var(--radius-2)] bg-[var(--color-accent-soft)]">
-                <Icon className="h-5 w-5 text-[var(--color-accent)]" />
-              </div>
-              <h3 className="text-xl font-semibold tracking-tight text-[var(--color-fg)]">
-                {category.title}
-              </h3>
-            </div>
-            <ul className="space-y-2.5">
-              {category.items.map((item) => (
-                <li
-                  key={item}
-                  className="flex gap-2.5 text-sm leading-relaxed text-[var(--color-fg-muted)]"
-                >
-                  <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-[var(--color-accent)]" />
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </div>
+      <Card
+        className={cn(
+          "h-full p-5 transition-colors duration-[var(--dur-2)] hover:border-[var(--color-accent)]/40",
+          className,
+        )}
+      >
+        <div className="mb-4 flex items-center gap-3">
+          <SkillIconTile icon={category.icon} size="sm" />
+          <h3 className="font-semibold tracking-tight text-[var(--color-fg)]">{category.title}</h3>
+          <span className="ml-auto font-mono text-xs text-[var(--color-fg-muted)]">
+            {String(category.items.length).padStart(2, "0")}
+          </span>
         </div>
+        <ul className="flex flex-wrap gap-2">
+          {category.items.map((item) => (
+            <li
+              key={item}
+              className="group/chip inline-flex items-center gap-1.5 rounded-[var(--radius-1)] border border-[var(--color-border)] bg-[var(--color-bg)] px-2.5 py-1 text-xs font-medium text-[var(--color-fg-muted)] transition-colors hover:border-[var(--color-accent)]/50 hover:text-[var(--color-fg)]"
+            >
+              <TechIcon name={item} />
+              {item}
+            </li>
+          ))}
+        </ul>
       </Card>
     </motion.div>
   )

@@ -10,6 +10,7 @@ import { ProjectSearchInput, useProjectSearch } from "@/features/project-search"
 import { ProjectCard } from "@/entities/project"
 import { PROJECTS, PROFILE } from "@/shared/config/site-data"
 import { Button } from "@/shared/ui/button"
+import { Container } from "@/shared/ui/container"
 import { SectionHeading } from "@/shared/ui/section-heading"
 
 /**
@@ -23,8 +24,8 @@ export function CodesView() {
   }, [])
 
   return (
-    <section className="px-5 py-12 md:py-20">
-      <div className="mx-auto max-w-6xl">
+    <section className="py-12 md:py-16">
+      <Container>
         <Button variant="ghost" size="sm" className="mb-8" asChild>
           <Link to="/">
             <ArrowLeft className="h-4 w-4" />
@@ -60,7 +61,7 @@ export function CodesView() {
             ))}
           </div>
         )}
-      </div>
+      </Container>
     </section>
   )
 }

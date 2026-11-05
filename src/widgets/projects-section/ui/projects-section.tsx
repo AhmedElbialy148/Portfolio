@@ -8,6 +8,7 @@ import { ArrowRight } from "lucide-react"
 import { getFeaturedProjects } from "@/shared/config/site-data"
 import { ProjectCard } from "@/entities/project"
 import { Button } from "@/shared/ui/button"
+import { Container } from "@/shared/ui/container"
 import { SectionHeading } from "@/shared/ui/section-heading"
 
 /**
@@ -17,10 +18,11 @@ export function ProjectsSection() {
   const featured = getFeaturedProjects()
 
   return (
-    <section id="projects" className="px-5 py-20 md:py-28">
-      <div className="mx-auto max-w-6xl">
+    <section id="projects" className="border-y border-[var(--color-border)] bg-[var(--color-band)] py-16 md:py-20">
+      <Container>
         <div className="mb-10 flex flex-wrap items-end justify-between gap-4">
           <SectionHeading
+            eyebrow="Featured work"
             title="Personal Projects"
             subtitle="Selected work — full gallery available on the projects page."
             className="mb-0"
@@ -37,7 +39,7 @@ export function ProjectsSection() {
             <ProjectCard key={project.id} project={project} index={index} />
           ))}
         </div>
-      </div>
+      </Container>
     </section>
   )
 }

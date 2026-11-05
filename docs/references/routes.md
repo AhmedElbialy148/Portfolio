@@ -16,22 +16,26 @@ Static fallback title (before JS runs): `Ahmed Elbialy`, set in `index.html`.
 
 | Order | Widget              | Anchor id     | Background        |
 | ----- | ------------------- | ------------- | ----------------- |
-| 1     | `HeroSection`       | none          | bg + accent glow  |
-| 2     | `SkillsSection`     | `#skills`     | bg                |
-| 3     | `ExperienceSection` | `#experience` | surface-2         |
-| 4     | `EducationSection`  | `#education`  | bg                |
-| 5     | `ProjectsSection`   | `#projects`   | bg                |
-| 6     | `SiteFooter`        | `#contact`    | surface-1         |
+| 1     | `HeroSection`       | none          | bg + dot grid + accent glow |
+| 2     | `ServicesSection`   | `#services`   | band              |
+| 3     | `SkillsSection`     | `#skills`     | bg                |
+| 4     | `ExperienceSection` | `#experience` | band              |
+| 5     | `EducationSection`  | `#education`  | bg                |
+| 6     | `ProjectsSection`   | `#projects`   | band              |
+| 7     | `SiteFooter`        | `#contact`    | bg + accent glow  |
 
-The only in-page link is the hero's "View work" button (`#projects`). The header has no links to these anchors.
+Sections alternate between `--color-bg` and `--color-band` (with top and bottom borders) so section breaks are visible. `section[id]` has `scroll-margin-top` so the sticky header doesn't cover anchor targets.
+
+Header links use `<Link to={{ pathname: "/", hash }}>`. `HomeView` scrolls to `location.hash` on each navigation, so the links also work from `/codes`.
 
 ## Header navigation
 
 | Item       | Target                          | Desktop | Mobile menu |
 | ---------- | ------------------------------- | ------- | ----------- |
 | Logo       | `/`                             | ✓       | ✓           |
-| Projects   | `/codes`                        | ✓       | ✓ ("All Projects") |
-| Email      | `mailto:` from `SITE_LINKS`     | ✓       | ✓           |
-| GitHub     | `SITE_LINKS.github`             | ✓       | ✓           |
-| LinkedIn   | `SITE_LINKS.linkedin`           | ✓       | ✓           |
-| Theme      | toggles `data-theme`            | ✓       | ✓           |
+| Sections     | `NAV_ITEMS` → `/#<id>`        | ✓ (≥ lg) | ✓          |
+| All projects | `/codes`                      | ✓ (≥ lg) | ✓          |
+| Theme        | toggles `data-theme`          | ✓        | ✓          |
+| Let's talk   | `mailto:` `PROFILE.email`     | ✓ (≥ sm) | ✓ (< sm)   |
+
+GitHub, LinkedIn and email icons are in the hero and the contact section, not the header.

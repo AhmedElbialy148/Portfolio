@@ -24,17 +24,48 @@ export interface Experience {
   dates: string
   location: string
   workType: string
+  /** Always-visible bullets. Keep to about six. */
   highlights: readonly string[]
+  /** Extra detail, hidden behind a "Show more" toggle. */
+  moreHighlights?: readonly string[]
+  /** Key technologies, shown as chips under the bullets. */
+  stack?: readonly string[]
 }
 
-/** A skill category with bullet points. */
+/** Icon keys available to skill groups and services. */
+export type SkillIcon = "server" | "cloud" | "brain" | "layers" | "database" | "workflow"
+
+/** A group of related technologies, rendered as chips. */
 export interface SkillCategory {
   id: string
   title: string
-  icon: string
+  icon: SkillIcon
+  /** Short technology labels — one chip each. */
   items: readonly string[]
-  /** Optional Lottie animation URL for this category. */
-  lottieSrc?: string
+}
+
+/** A high-level area of work shown in the "What I do" section. */
+export interface Service {
+  id: string
+  title: string
+  icon: SkillIcon
+  /** One or two sentences describing the work. */
+  description: string
+  /** Up to three headline technologies. */
+  tags: readonly string[]
+}
+
+/** A headline number shown in the hero stats row. */
+export interface Stat {
+  value: string
+  label: string
+}
+
+/** An in-page navigation anchor on the home view. */
+export interface NavItem {
+  /** Section element id on the home view (without `#`). */
+  id: string
+  label: string
 }
 
 /** An education entry. */
@@ -62,7 +93,16 @@ export interface Profile {
   location: string
   email: string
   phone: string
+  /** Full summary, mirrors the CV. */
   bio: string
+  /** Two-sentence hero version of the bio. */
+  tagline: string
+  /** Short availability line shown next to the status dot. */
+  availability: string
+  /** Current employer and focus areas, shown on the hero photo card. */
+  currently: { company: string; focus: string }
+  /** Spoken languages with level. */
+  spokenLanguages: readonly string[]
   resumeSlot: string
 }
 
@@ -73,98 +113,146 @@ export const PROFILE: Profile = {
   email: "ahmedelbialy148@gmail.com",
   phone: "+201150375211",
   bio: "Backend-focused full-stack engineer with 2+ years of experience building scalable web applications, APIs, system integrations, and data pipelines using Next.js, FastAPI, PostgreSQL, AWS, and GCP. I specialize in AI agent engineering — LangGraph and LangChain systems with tool integrations, execution control, and multi-step orchestration — plus business-system integrations, Google Apps Script automation, and secure cloud services.",
+  tagline:
+    "I design the backend of full-stack products — APIs, data models, integrations and cloud infrastructure — with Next.js, FastAPI, PostgreSQL, AWS and GCP. I also build the LangGraph agents and RAG pipelines that run on them.",
+  availability: "Open to full-time roles & freelance",
+  currently: { company: "MIS", focus: "Full-stack systems · AI agents" },
+  spokenLanguages: ["Arabic (native)", "English (B2)", "German (A1)"],
   resumeSlot: "/Ahmed_Adel_CV.pdf",
 }
+
+/** Hero stats — keep every number verifiable from the CV. */
+export const STATS: readonly Stat[] = [
+  { value: "2+", label: "Years experience" },
+  { value: "6", label: "Roles & internships" },
+  { value: "2", label: "Clouds — AWS & GCP" },
+  { value: "11", label: "Public projects" },
+] as const
+
+/** In-page sections linked from the header. */
+export const NAV_ITEMS: readonly NavItem[] = [
+  { id: "services", label: "Services" },
+  { id: "skills", label: "Skills" },
+  { id: "experience", label: "Experience" },
+  { id: "projects", label: "Projects" },
+  { id: "contact", label: "Contact" },
+] as const
+
+export const SERVICES: readonly Service[] = [
+  {
+    id: "backend",
+    title: "Backend & APIs",
+    icon: "server",
+    description:
+      "Scalable REST and GraphQL APIs and event-driven services in Node.js and Python, built for clean contracts and production load.",
+    tags: ["NestJS", "FastAPI", "Celery"],
+  },
+  {
+    id: "ai",
+    title: "AI Agent Engineering",
+    icon: "brain",
+    description:
+      "LangGraph agents, hybrid RAG and streaming chat with tool integrations, context management and source-cited answers.",
+    tags: ["LangGraph", "pgvector", "RAG"],
+  },
+  {
+    id: "cloud",
+    title: "Cloud & DevOps",
+    icon: "cloud",
+    description:
+      "Containerised deployments on AWS and GCP with CI/CD, secret management, load balancing and secure networking.",
+    tags: ["AWS", "GCP", "Docker"],
+  },
+  {
+    id: "fullstack",
+    title: "Full-Stack & Integrations",
+    icon: "layers",
+    description:
+      "Next.js front ends wired end-to-end to the backend, plus business-system integrations and Apps Script automation.",
+    tags: ["Next.js", "React", "TypeScript"],
+  },
+] as const
 
 export const SKILL_CATEGORIES: readonly SkillCategory[] = [
   {
     id: "backend",
     title: "Backend & APIs",
     icon: "server",
-    lottieSrc: "/assets/lotties/frontend-lottie.json",
     items: [
-      "Node.js — Express, NestJS, Fastify",
-      "Python — FastAPI, Celery, event-driven services",
-      "Spring Boot, REST, GraphQL, SSR",
-      "System design, distributed systems, OOP, SOLID principles",
+      "Node.js",
+      "Express",
+      "NestJS",
+      "Fastify",
+      "Python",
+      "FastAPI",
+      "Celery",
+      "Spring Boot",
+      "REST",
+      "GraphQL",
+      "System design",
+      "SOLID / OOP",
     ],
   },
   {
     id: "ai",
-    title: "AI & Agent Engineering",
+    title: "AI & Agents",
     icon: "brain",
-    lottieSrc: "/assets/lotties/ai-lottie.json",
     items: [
-      "LangChain, LangGraph, and LLM agents",
-      "Hybrid RAG — pgvector, full-text search, reciprocal rank fusion",
-      "Tool integration and agent orchestration",
-      "Prompt engineering for production automation",
+      "LangChain",
+      "LangGraph",
+      "LLM agents",
+      "Hybrid RAG",
+      "Reciprocal rank fusion",
+      "Tool orchestration",
+      "Prompt engineering",
     ],
   },
   {
     id: "cloud",
     title: "Cloud & DevOps",
     icon: "cloud",
-    lottieSrc: "/assets/lotties/cloudlottie.json",
     items: [
-      "AWS — ECS, ECR, RDS, S3, Lambda, Cognito, Amplify",
-      "GCP — Cloud Run, Cloud SQL, GCS, Memorystore, Secret Manager, Cloud Armor",
-      "Docker, Docker Compose, Kubernetes, Nginx",
-      "CI/CD, secure networking, load balancing, SSL/TLS",
+      "AWS ECS / ECR",
+      "RDS",
+      "S3",
+      "Lambda",
+      "Cognito",
+      "GCP Cloud Run",
+      "Cloud SQL",
+      "Memorystore",
+      "Cloud Armor",
+      "Docker",
+      "Kubernetes",
+      "Nginx",
+      "CI/CD",
+      "Git",
     ],
   },
   {
     id: "frontend",
     title: "Frontend & Mobile",
     icon: "layers",
-    lottieSrc: "/assets/lotties/stackslottie.json",
-    items: [
-      "React.js, Next.js, TypeScript",
-      "React Native (Expo) for cross-platform apps",
-      "HTML5, CSS3, JavaScript",
-      "Responsive, performance-optimized UIs",
-    ],
+    items: ["React", "Next.js", "TypeScript", "React Native (Expo)", "JavaScript", "HTML / CSS"],
   },
   {
     id: "databases",
     title: "Databases",
     icon: "database",
-    items: [
-      "PostgreSQL and pgvector",
-      "Supabase — data modeling and RBAC",
-      "MongoDB, DynamoDB",
-      "Redis",
-    ],
+    items: ["PostgreSQL", "pgvector", "Supabase", "MongoDB", "DynamoDB", "Redis"],
   },
   {
     id: "automation",
     title: "Data & Automation",
     icon: "workflow",
     items: [
-      "Google Apps Script, clasp, Google Sheets",
-      "Pandas, XLWings",
-      "Selenium, Playwright",
-      "Google Document AI, data pipelines",
-    ],
-  },
-  {
-    id: "tools",
-    title: "Developer Tools",
-    icon: "wrench",
-    items: [
-      "Cursor (AI IDE), VS Code, IntelliJ",
-      "Postman",
-      "Git, GitHub",
-    ],
-  },
-  {
-    id: "languages",
-    title: "Languages",
-    icon: "languages",
-    items: [
-      "Arabic — Native",
-      "English — B2 (Upper Intermediate)",
-      "German — A1 (Beginner, currently learning)",
+      "Apps Script",
+      "clasp",
+      "Google Sheets",
+      "Pandas",
+      "XLWings",
+      "Selenium",
+      "Playwright",
+      "Document AI",
     ],
   },
 ] as const
@@ -178,23 +266,32 @@ export const EXPERIENCES: readonly Experience[] = [
     location: "Al Shorouk City, Cairo",
     workType: "On-Site",
     highlights: [
-      "Architected scalable full-stack applications with Next.js, focusing on backend system design, API architecture, and performance optimization.",
-      "Built AI agents with LangGraph and LangChain — tool-integrated systems (e.g., Tavily web search) with controlled execution flows, interrupts, and node-based orchestration loops.",
-      "Engineered multi-step agent pipelines capable of dynamic decision-making and task automation across complex workflows.",
-      "Engineered a multi-layer agentic RAG system using PostgreSQL/pgvector, full-text search, and reciprocal rank fusion, producing source-cited answers grounded in project documents and reference materials.",
-      "Built Python document-ingestion workflows for PDF, DOCX, screenplay, and budget formats, with Google Document AI OCR fallback, Voyage AI embeddings, semantic chunking, and resumable PostgreSQL jobs.",
-      "Implemented LangGraph conversation-context handling with token-aware history summarization, prompt caching, and retry logic for long user sessions and unreliable LLM API responses.",
-      "Built a Next.js server-sent events (SSE) chat that streams LangGraph agent responses to the browser, persists messages, and surfaces inline citations for source verification.",
-      "Deployed production cloud infrastructure for AI agent systems on AWS — containerized services on ECS and ECR, load balancing, SSL/TLS, and RDS PostgreSQL.",
-      "Developed services on a GCP staging environment using Cloud Run v2, Cloud SQL (PostgreSQL/pgvector), Memorystore Redis, GCS, Secret Manager, and Cloud Armor-protected HTTPS.",
-      "Designed and managed PostgreSQL databases on Supabase with robust data models, secure RBAC, and high-performance API endpoints.",
-      "Implemented Firebase authentication for a Next.js app, including TOTP/SMS multi-factor authentication, PostgreSQL-backed sessions, token-revocation checks, and account lockout.",
-      "Integrated third-party platforms (Paychex, AxisCare, Relias) with reliable authentication layers and data synchronization pipelines.",
-      "Built asynchronous, event-driven backend services with FastAPI and Celery for background jobs and data pipelines.",
-      "Developed Python automation (Selenium, Playwright, Pandas, XLWings) to extract, process, and transform large datasets, reducing manual operational overhead.",
-      "Designed and built a cross-platform PyQt desktop application with structured UI architecture, local data persistence, and workflow automation.",
-      "Developed Google Apps Script solutions that populate Google Sheets and send emails programmatically, using clasp and Git for local development.",
-      "Used AI-driven development workflows in Cursor IDE to speed up development and debugging and to raise code quality.",
+      "Lead backend and system design for Next.js full-stack products — API architecture, PostgreSQL and Supabase data models with RBAC, and performance tuning.",
+      "Build event-driven Python services with FastAPI and Celery, and integrate third-party platforms (Paychex, AxisCare, Relias) through reliable auth layers and data-sync pipelines.",
+      "Implemented Firebase authentication with TOTP/SMS multi-factor auth, PostgreSQL-backed sessions, token revocation and account lockout.",
+      "Engineer LangGraph and LangChain agents and a multi-layer agentic RAG system (pgvector, full-text search, reciprocal rank fusion) with source-cited answers, streamed to a Next.js chat over SSE.",
+      "Built Python document-ingestion pipelines for PDF, DOCX, screenplay and budget files — Document AI OCR fallback, Voyage AI embeddings, semantic chunking and resumable jobs.",
+      "Run production infrastructure on AWS (ECS, ECR, RDS, load balancing, SSL/TLS) and a GCP staging environment (Cloud Run, Cloud SQL, Memorystore, Secret Manager, Cloud Armor).",
+    ],
+    moreHighlights: [
+      "Agents use tool integrations (e.g. Tavily web search), interrupts and node-based orchestration loops for multi-step decision-making and task automation.",
+      "LangGraph conversation-context handling with token-aware history summarization, prompt caching and retry logic for long sessions and unreliable LLM APIs.",
+      "Python automation with Selenium, Playwright, Pandas and XLWings to extract and transform large datasets, reducing manual operational work.",
+      "Google Apps Script solutions that populate Google Sheets and send emails programmatically, developed locally with clasp and Git.",
+      "A cross-platform PyQt desktop application with structured UI architecture, local data persistence and workflow automation.",
+      "AI-assisted development in Cursor to speed up development and debugging and raise code quality.",
+    ],
+    stack: [
+      "Next.js",
+      "FastAPI",
+      "Celery",
+      "PostgreSQL",
+      "Supabase",
+      "Firebase",
+      "LangGraph",
+      "pgvector",
+      "AWS",
+      "GCP",
     ],
   },
   {

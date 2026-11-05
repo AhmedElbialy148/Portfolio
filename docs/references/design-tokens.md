@@ -10,7 +10,8 @@ The theme is selected with `data-theme="light" | "dark"` on `<html>`. Dark is th
 | ---------------------- | -------------------------- | -------------------------- | --------------------------------- |
 | `--color-bg`           | `#fafaf9`                  | `#0a0a0b`                  | Page background                   |
 | `--color-surface-1`    | `#ffffff`                  | `#111113`                  | Cards, footer                     |
-| `--color-surface-2`    | `#fafaf9`                  | `#18181b`                  | Experience band, hover fills      |
+| `--color-surface-2`    | `#fafaf9`                  | `#18181b`                  | Hover fills, photo backdrop       |
+| `--color-band`         | `#f5f5f4`                  | `#0e0e10`                  | Alternating section bands, between bg and surface-1 so cards stand out |
 | `--color-fg`           | `#1c1917`                  | `#ededef`                  | Primary text                      |
 | `--color-fg-muted`     | `#78716c`                  | `#9b9ba3`                  | Body copy, bullets                |
 | `--color-fg-subtle`    | `#a8a29e`                  | `#6c6c75`                  | Dates, captions, placeholders     |
@@ -44,10 +45,12 @@ The theme is selected with `data-theme="light" | "dark"` on `<html>`. Dark is th
 | `--font-sans`    | Space Grotesk, system-ui (Google Fonts)     |
 | `--font-display` | Space Grotesk, system-ui                    |
 | `--font-mono`    | JetBrains Mono, ui-monospace                |
-| `--text-xs … 3xl`| 12 / 14 / 16 / 20 / 28 / 44 / 64 px         |
+| `--text-md`      | 16 px, body only                            |
 | `--leading-*`    | tight 1.15 · snug 1.3 · normal 1.55         |
 
-Most components use Tailwind's text scale (`text-sm`, `text-5xl` …), not `--text-*`. Only `body` uses `--text-md`.
+Components use Tailwind's text scale (`text-sm`, `text-3xl` …). **Don't define `--text-xs` to `--text-9xl` here.** Tailwind v4 compiles `text-xl` to `font-size: var(--text-xl)`, so a `:root` token with that name overrides the utility site-wide. That bug inflated every heading until 2026-11-05.
+
+Page width and side padding come from the `Container` component ([shared/ui/container](../../src/shared/ui/container/container.tsx)): `max-w-7xl` (1280 px), `px-5` / `md:px-8`.
 
 ## Spacing, radius, shadow
 

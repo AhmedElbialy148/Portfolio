@@ -41,3 +41,9 @@ body {
   background: var(--color-accent-soft);
   color: var(--color-fg);
 }
+
+/* Keep anchor targets clear of the sticky 64px header. */
+section[id],
+footer[id] {
+  scroll-margin-top: 4.5rem;
+}
